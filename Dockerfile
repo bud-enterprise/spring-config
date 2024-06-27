@@ -40,9 +40,9 @@ ARG REPOSITORY_AUTH_TOKEN
 RUN ./mvnw package
 
 FROM scratch as export-jar
-COPY --from=build /app/target/myserver-*.jar .
+COPY --from=build /app/target/spring-config*.jar .
 
 FROM eclipse-temurin:17-jre-jammy as production
 EXPOSE 8080
-COPY --from=build /app/target/myserver-*.jar /myserver.jar
-CMD ["java", "-Dport=9090", "-jar", "/myserver.jar"]
+COPY --from=build /app/target/spring-config*.jar /spring-config.jar
+CMD ["java", "-Dport=8888", "-jar", "/spring-config.jar"]
