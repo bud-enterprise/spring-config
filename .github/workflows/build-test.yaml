@@ -1,5 +1,5 @@
 ---
-name: Manual Build & Test & Publish
+name: Build & Test & Publish
 
 on:
   workflow_dispatch:
